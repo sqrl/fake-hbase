@@ -54,27 +54,27 @@ class FakeHConnection(
   // -----------------------------------------------------------------------------------------------
   // openTable() and aliases:
 
-  def openTable(name: Bytes): HTableInterface = {
-    openTable(TableName.valueOf(name), null)
+  def getTable(name: Bytes): HTableInterface = {
+    getTable(TableName.valueOf(name), null)
   }
 
   def getTable(name: Bytes, pool: ExecutorService): HTableInterface = {
-    openTable(TableName.valueOf(name), pool)
+    getTable(TableName.valueOf(name), pool)
   }
 
-  def openTable(name: String): HTableInterface = {
-    openTable(TableName.valueOf(name), null)
+  def getTable(name: String): HTableInterface = {
+    getTable(TableName.valueOf(name), null)
   }
 
-  def openTable(name: String, pool: ExecutorService): HTableInterface = {
-    openTable(TableName.valueOf(name), pool)
+  def getTable(name: String, pool: ExecutorService): HTableInterface = {
+    getTable(TableName.valueOf(name), pool)
   }
 
-  def openTable(name: TableName): HTableInterface = {
-    openTable(name, null)
+  def getTable(name: TableName): HTableInterface = {
+    getTable(name, null)
   }
 
-  def openTable(name: TableName, pool: ExecutorService): HTableInterface = {
+  def getTable(name: TableName, pool: ExecutorService): HTableInterface = {
     val fullName = name.getNameAsString()  // namespace:table-name
     mFakeHBase.InterfaceFactory.create(mConf, fullName)
   }
